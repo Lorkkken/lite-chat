@@ -128,5 +128,19 @@ document.getElementById('search-input').onkeydown = async (e) => {
     }
 };
 
-window.setTheme = (t) => { document.body.setAttribute('data-theme', t); localStorage.setItem('theme', t); };
-if (localStorage.getItem('theme')) setTheme(localStorage.getItem('theme'));
+window.setTheme = (t) => { 
+    document.body.setAttribute('data-theme', t); 
+    localStorage.setItem('theme', t); 
+};
+
+window.updateNickname = async () => {
+    const newNick = document.getElementById('newNickInput').value.trim();
+    if (newNick && auth.currentUser) {
+        const myId = auth.currentUser.email.split('@')[0];
+        await update(ref(db, `Users/${myId}`), { nick: newNick });
+        document.getElementById('display-nick').innerText = newNick;
+        currentUserData.nick = newNick;
+        alert("Ник изменен!");
+        window.toggleSettings();
+    }
+};
