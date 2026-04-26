@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LiteChat Premium v1.6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="version-tag">ver 1.6 Global Update</div>
+
+    <div id="auth-screen">
+        <div class="auth-card">
+            <h2>Lite Chat</h2>
+            <p>Основано на FireBase</p>
+            <div id="auth-error"></div>
+            <input type="text" id="nickInput" placeholder="Твой ник">
+            <input type="password" id="passInput" placeholder="Пароль">
+            <button id="loginBtn">Войти</button>
+            <button id="regBtn" class="flat-btn">Регистрация</button>
+        </div>
+    </div>
+
+    <div id="settings-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="toggleSettings()">✕</button>
+            <h3>Настройки</h3>
+            <div class="setting-item">
+                <label>Тема</label>
+                <div class="btn-row">
+                    <button onclick="setTheme('dark')">Темная</button>
+                    <button onclick="setTheme('light')">Светлая</button>
+                </div>
+            </div>
+            <div class="setting-item">
+                <label>Никнейм</label>
+                <input type="text" id="newNickInput">
+                <button onclick="updateNickname()" class="save-btn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app">
+        <aside id="sidebar">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Поиск ника...">
+            </div>
+            <div id="contacts-list" class="scroll-area">
+                <div class="contact-item active" onclick="switchChat('all', this)">общий-чат</div>
+            </div>
+            <div id="user-bar">
+                <div class="user-info">
+                    <span id="display-nick">Загрузка...</span>
+                    <span class="status-dot">● В сети</span>
+                </div>
+                <button class="icon-btn" onclick="toggleSettings()">⚙️</button>
+                <button class="icon-btn" onclick="logOut()">🚪</button>
+            </div>
+        </aside>
+
+        <main id="main-chat">
+            <header id="chat-header">
+                <button id="back-btn" onclick="closeChat()">←</button>
+                <span class="hash">#</span><span id="chat-title">общий-чат</span>
+            </header>
+            <div id="chat-container" class="scroll-area"></div>
+            <div id="input-area">
+                <div class="input-wrap">
+                    <button class="icon-btn attach-btn" onclick="document.getElementById('fileInput').click()">+</button>
+                    <input type="file" id="fileInput" hidden accept="image/*" onchange="uploadImage(this)">
+                    <input type="text" id="messageInput" placeholder="Сообщение...">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

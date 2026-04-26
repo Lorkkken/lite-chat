@@ -1,0 +1,70 @@
+:root {
+    --bg-main: #313338;
+    --bg-sidebar: #2b2d31;
+    --bg-card: #1e1f22;
+    --bg-input: #383a40;
+    --text-main: #dbdee1;
+    --text-muted: #949ba4;
+    --accent: #5865f2;
+    --danger: #da373c;
+}
+
+[data-theme="light"] {
+    --bg-main: #ffffff; --bg-sidebar: #f2f3f5; --bg-card: #ebedef;
+    --bg-input: #e3e5e8; --text-main: #060607; --text-muted: #4e5058;
+}
+
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: var(--bg-main); color: var(--text-main); margin: 0; height: 100vh; overflow: hidden; }
+
+/* Версия справа */
+.version-tag { position: fixed; bottom: 5px; right: 10px; font-size: 10px; color: var(--text-muted); z-index: 9999; opacity: 0.5; }
+
+/* Auth */
+#auth-screen { position: fixed; inset: 0; background: var(--bg-card); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.auth-card { background: var(--bg-main); padding: 40px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; }
+.auth-card input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: none; background: var(--bg-input); color: white; }
+.auth-card button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: bold; cursor: pointer; }
+.flat-btn { background: none !important; color: var(--accent) !important; margin-top: 10px; }
+
+/* App Structure */
+#app { display: flex; width: 100%; height: 100vh; }
+#sidebar { width: 300px; background: var(--bg-sidebar); display: flex; flex-direction: column; border-right: 1px solid rgba(0,0,0,0.2); }
+#main-chat { flex: 1; display: flex; flex-direction: column; background: var(--bg-main); }
+
+.scroll-area { flex: 1; overflow-y: auto; padding: 15px; }
+.contact-item { padding: 12px; border-radius: 8px; cursor: pointer; color: var(--text-muted); margin-bottom: 2px; }
+.contact-item.active { background: var(--bg-input); color: var(--text-main); }
+
+#user-bar { background: rgba(0,0,0,0.1); padding: 15px; display: flex; align-items: center; gap: 10px; }
+.user-info { flex: 1; display: flex; flex-direction: column; }
+.status-dot { font-size: 10px; color: #43b581; }
+
+#chat-header { padding: 15px 25px; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; align-items: center; font-size: 18px; font-weight: bold; }
+.hash { opacity: 0.5; margin-right: 5px; }
+#back-btn { display: none; margin-right: 10px; background: none; border: none; color: var(--accent); font-size: 20px; }
+
+.msg { margin-bottom: 15px; max-width: 85%; }
+.msg-author { font-weight: bold; color: var(--accent); font-size: 13px; margin-bottom: 3px; }
+.chat-img { max-width: 100%; border-radius: 10px; margin-top: 5px; }
+
+#input-area { padding: 20px; }
+.input-wrap { background: var(--bg-input); border-radius: 8px; display: flex; align-items: center; padding: 5px 15px; }
+#messageInput { flex: 1; background: transparent; border: none; color: var(--text-main); padding: 10px; outline: none; }
+
+.icon-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 20px; }
+
+/* Settings Modal */
+#settings-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; }
+.modal-content { background: var(--bg-main); padding: 30px; border-radius: 15px; width: 90%; max-width: 350px; position: relative; }
+.close-btn { position: absolute; right: 15px; top: 15px; background: none; border: none; color: white; font-size: 20px; }
+
+/* ——— МОБИЛЬНАЯ ВЕРСИЯ ——— */
+@media (max-width: 768px) {
+    #sidebar { position: absolute; width: 100%; height: 100%; z-index: 10; }
+    #main-chat { position: absolute; width: 100%; height: 100%; z-index: 5; }
+    
+    /* Когда открыт чат */
+    .chat-open #sidebar { display: none; }
+    .chat-open #back-btn { display: block; }
+}
