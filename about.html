@@ -5,7 +5,7 @@
     <title>LiteChat | О нас</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-950 text-white font-sans">
+<body class="bg-gray-950 text-white font-sans min-h-screen flex flex-col">
 
     <nav class="flex justify-between items-center py-6 px-10 bg-gray-900 border-b border-gray-800">
         <a href="index.html" class="text-2xl font-bold text-blue-400">LiteChat</a>
@@ -16,17 +16,18 @@
         </div>
     </nav>
 
-    <section class="container mx-auto px-10 pt-20 max-w-4xl">
+    <section class="container mx-auto px-10 pt-20 max-w-4xl flex-grow">
         <h2 class="text-4xl font-bold mb-10 text-blue-400">О проекте</h2>
         <div class="bg-gray-900 p-8 rounded-2xl border border-gray-800 space-y-6">
             <p><strong>LiteChat</strong> — это проект, созданный для тех, кто ценит скорость и приватность.</p>
-            <p><strong>Технологии:</strong> Клиент написан на Python с использованием интерфейса CustomTkinter. Это позволяет программе оставаться легкой и выглядеть современно на любой версии Windows.</p>
-            <p><strong>Инфраструктура:</strong> Мы размещены на серверах <span class="text-blue-400">Aeza.net</span>. Это дает нам стабильный uptime и минимальную задержку при передаче сообщений.</p>
+            <p><strong>Технологии:</strong> Клиент написан на Python с использованием интерфейса CustomTkinter.</p>
+            <p><strong>Инфраструктура:</strong> Мы размещены на серверах <span class="text-blue-400">Aeza.net</span>.</p>
             <p><strong>Безопасность:</strong> Прямое шифрование, отсутствие сбора лишних данных и фокус на пользовательском опыте.</p>
         </div>
-        <footer class="mt-20 mb-10 text-center text-gray-600">
-            <p>© 2026 Сделано <strong>Lorkken Group</strong></p>
-        </footer>
     </section>
+
+    <footer class="py-10 text-center text-gray-600">
+        <p>© 2026 Сделано <strong>Lorkken Group</strong></p>
+    </footer>
 </body>
 </html>
